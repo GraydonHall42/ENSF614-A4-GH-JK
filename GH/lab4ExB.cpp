@@ -59,7 +59,12 @@ int main() {
 }
 
 
-
+/* File Name: Lab4ExB.cpp
+* Lab # and Assignment #: Lab #4 Exercise B
+* Lab section: 1
+* Completed by: Graydon Hall and Jared Kraus
+* Submission Date: 2021-10-19
+*/
 String_Vector transpose (const String_Vector& sv) {
 
     int sv_rows = sv.size();
@@ -76,8 +81,6 @@ String_Vector transpose (const String_Vector& sv) {
             vs.at(i).push_back(sv.at(j).at(i));
         }
     }
-    
-     
     
     return vs;
     

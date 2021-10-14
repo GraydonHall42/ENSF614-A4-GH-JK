@@ -1,3 +1,10 @@
+/* File Name: Lab4EC3.cpp
+* Lab # and Assignment #: Lab #4 Exercise C
+* Lab section: 1
+* Completed by: Graydon Hall and Jared Kraus
+* Submission Date: 2021-10-19
+*/
+
 //  ENSF 614 Lab 4 - Exercise C
 #include <iostream>
 #include <fstream>
@@ -88,8 +95,11 @@ void print_from_binary(char* filename) {
 
     // write to ouptput file
     for(int i=0; i<6; i++){
-        cout << "Name: " << cityHolder[i].name << ", x coordinate: " << cityHolder[i].x << ", y coordinate: " << cityHolder[i].y << endl;
-        ofs << "Name: " << cityHolder[i].name << ", x coordinate: " << cityHolder[i].x << ", y coordinate: " << cityHolder[i].y << endl;
+        cout << "Name: " << cityHolder[i].name << ", x coordinate: " 
+        << cityHolder[i].x << ", y coordinate: " << cityHolder[i].y << endl;
+        
+        ofs << "Name: " << cityHolder[i].name << ", x coordinate: " 
+        << cityHolder[i].x << ", y coordinate: " << cityHolder[i].y << endl;
     }
 
     // close our files
