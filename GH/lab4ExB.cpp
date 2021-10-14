@@ -29,7 +29,7 @@ int main() {
     String_Vector sv;
     sv.resize(ROWS);
     
-    for(int i = 0; i < ROWS; i++)
+    for(int i = 0; i < ROWS; i++){
         for(int j = 0; j < COLS; j++) {
             sv.at(i).push_back(c);
             c++;
@@ -38,12 +38,18 @@ int main() {
             else if (c == 'z' + 1)
                 c = 'A';
         }
+    }
     
     
+
+
+
     for(int i = 0; i < ROWS; i++) {
         cout<< sv.at(i);
         cout << endl;
     }
+
+    cout << "\nTransposed vector: \n";
     
     String_Vector vs = transpose(sv);
     for(int i = 0; i < (int)vs.size(); i++)
@@ -55,10 +61,24 @@ int main() {
 
 
 String_Vector transpose (const String_Vector& sv) {
+
+    int sv_rows = sv.size();
+    int sv_cols = sv.at(0).size();
+
+    int vs_rows = sv_cols;
+    int vs_cols = sv_rows;
     
-    // STUDENTS MUST COMPLETE THE DEFINITION OF THIS FUNCTION.
-     
     String_Vector vs;
+    vs.resize(vs_rows);
+
+    for(int i=0; i<vs_rows; i++){
+        for(int j=0; j<vs_cols; j++){
+            vs.at(i).push_back(sv.at(j).at(i));
+        }
+    }
+    
+     
+    
     return vs;
     
 }

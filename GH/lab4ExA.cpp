@@ -10,8 +10,6 @@ using namespace std;
 
 #include "MyArray.h"
 
-typedef double EType; // does this go here?
-
 int main()
 {
   int i;
