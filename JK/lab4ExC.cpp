@@ -1,10 +1,3 @@
-/* File Name: Lab4EC3.cpp
-* Lab # and Assignment #: Lab #4 Exercise C
-* Lab section: 1
-* Completed by: Graydon Hall and Jared Kraus
-* Submission Date: 2021-10-19
-*/
-
 //  ENSF 614 Lab 4 - Exercise C
 #include <iostream>
 #include <fstream>
@@ -61,50 +54,8 @@ void write_binary_file(City cities[], int size, char* filename){
 }
 
 void print_from_binary(char* filename) {
+    /* Studnets must complete the implementaiton of this file. */
 
-
-    // open input file stream we get cities from
-    ifstream is(filename, ios::binary);
-    if(is.fail()){
-        cerr << "failed to open file: " << filename << endl;
-        exit(1);
-    }
-
-    // output file we will write to
-    ofstream ofs("output.txt", std::ofstream::trunc);
-    if(ofs.fail()){
-        cerr << "failed to open file: " << filename << endl;
-        exit(1);
-    }
-
-    // read cities from input file
-    City* cityHolder;
-    
-    // find nummber of cities, help from https://www.cppstories.com/2019/01/filesize/
-    int begin = is.tellg();  // beginning value
-    is.seekg (0, ios::end);  // go to end of file
-    int end = is.tellg();  // find end value
-    int num_cities = (end-begin)/sizeof(City);  // total number of cities
-    is.seekg (0, ios::beg);  // go to beginning of stream again
-
-    // read cities from file into array
-    cityHolder = new City[num_cities];
-    for(int i=0; i<num_cities; i++){
-        is.read((char*)(&cityHolder[i]), sizeof(City));
-    }
-
-    // write to ouptput file
-    for(int i=0; i<num_cities; i++){
-        cout << "Name: " << cityHolder[i].name << ", x coordinate: " 
-        << cityHolder[i].x << ", y coordinate: " << cityHolder[i].y << endl;
-        
-        ofs << "Name: " << cityHolder[i].name << ", x coordinate: " 
-        << cityHolder[i].x << ", y coordinate: " << cityHolder[i].y << endl;
-    }
-
-    // close our files
-    is.close();
-    ofs.close();
 }
 
 
