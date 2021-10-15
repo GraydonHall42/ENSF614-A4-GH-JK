@@ -94,7 +94,7 @@ void print_from_binary(char* filename) {
     }
 
     // write to ouptput file
-    for(int i=0; i<6; i++){
+    for(int i=0; i<num_cities; i++){
         cout << "Name: " << cityHolder[i].name << ", x coordinate: " 
         << cityHolder[i].x << ", y coordinate: " << cityHolder[i].y << endl;
         
