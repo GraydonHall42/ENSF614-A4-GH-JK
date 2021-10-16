@@ -10,6 +10,7 @@
 #include <fstream>
 #include <sstream>
 #include <stdlib.h>
+#include <vector>
 
 const int size = 6;
 using namespace std;
@@ -77,29 +78,21 @@ void print_from_binary(char* filename) {
         exit(1);
     }
 
-    // read cities from input file
-    City* cityHolder;
-    
-    // find nummber of cities, help from https://www.cppstories.com/2019/01/filesize/
-    int begin = is.tellg();  // beginning value
-    is.seekg (0, ios::end);  // go to end of file
-    int end = is.tellg();  // find end value
-    int num_cities = (end-begin)/sizeof(City);  // total number of cities
-    is.seekg (0, ios::beg);  // go to beginning of stream again
+    vector<City> cityVector;
+    City tempCity;
 
-    // read cities from file into array
-    cityHolder = new City[num_cities];
-    for(int i=0; i<num_cities; i++){
-        is.read((char*)(&cityHolder[i]), sizeof(City));
+    while(is.read((char*)(&tempCity), sizeof(City))){       
+        cityVector.push_back(tempCity);
     }
 
     // write to ouptput file
-    for(int i=0; i<num_cities; i++){
-        cout << "Name: " << cityHolder[i].name << ", x coordinate: " 
-        << cityHolder[i].x << ", y coordinate: " << cityHolder[i].y << endl;
+    for(int i=0; i<cityVector.size(); i++){
+        cout << "Name: " << cityVector[i].name << ", x coordinate: " 
+        << cityVector[i].x << ", y coordinate: " << cityVector[i].y << endl;
+
+        ofs << "Name: " << cityVector[i].name << ", x coordinate: " 
+        << cityVector[i].x << ", y coordinate: " << cityVector[i].y << endl;
         
-        ofs << "Name: " << cityHolder[i].name << ", x coordinate: " 
-        << cityHolder[i].x << ", y coordinate: " << cityHolder[i].y << endl;
     }
 
     // close our files
