@@ -40,9 +40,6 @@ int main() {
         }
     }
     
-    
-
-
 
     for(int i = 0; i < ROWS; i++) {
         cout<< sv.at(i);

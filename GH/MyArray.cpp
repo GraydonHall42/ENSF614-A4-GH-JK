@@ -24,24 +24,35 @@ MyArray::MyArray(const EType *builtin, int sizeA):sizeM(sizeA){
 
 // copy constructor
 MyArray::MyArray(const MyArray& source):sizeM(source.sizeM){
+  delete[] storageM;
   storageM = new EType[sizeM];
   for(int i=0; i<sizeM; i++){
     storageM[i] = source.storageM[i];
   }
 }
 
+
+// overload assignment operator
+MyArray &MyArray::operator=(const MyArray &rhs)
+{
+    if (this != &rhs)
+    {
+        delete[] storageM;
+        sizeM = rhs.sizeM;
+        storageM = new EType[rhs.sizeM];
+        for (int i = 0; i < rhs.sizeM; i++)
+        {
+            storageM[i] = rhs.storageM[i];
+        }
+    }
+    return *this;
+}
+
 //Destructor
 MyArray::~MyArray(){
   sizeM = 0;
-  delete storageM;
-}
-
-MyArray& MyArray::operator =(const MyArray& rhs){
-  sizeM=rhs.sizeM;
-  storageM = new EType[rhs.sizeM];
-  for(int i=0; i<sizeM; i++){
-    storageM[i] = rhs.storageM[i];
-  }
+  delete[] storageM;
+  storageM = nullptr;
 }
 
 int MyArray::size() const{
@@ -58,7 +69,6 @@ void MyArray::set(int i, EType new_value){
 
 
 void MyArray::resize(int new_size){
-  sizeM = new_size;
   EType* tempHolder;
   tempHolder = new EType[new_size];
 
@@ -75,7 +85,8 @@ void MyArray::resize(int new_size){
     tempHolder[i] = storageM[i];
   }
 
-  delete storageM;
+  delete[] storageM;
   storageM = tempHolder;
+  sizeM = new_size;
 
 }

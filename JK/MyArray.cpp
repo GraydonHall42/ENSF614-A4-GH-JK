@@ -1,5 +1,9 @@
-// MyArray.cpp
-// ENSF 614 Fall 2021 Lab 4 Exercise A
+/* File Name: MyArray.cpp
+* Lab # and Assignment #: Lab #4 Exercise A
+* Lab section: 1
+* Completed by: Graydon Hall and Jared Kraus
+* Submission Date: 2021-10-19
+*/
 
 #include "MyArray.h"
 

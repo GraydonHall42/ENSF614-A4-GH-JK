@@ -11,6 +11,7 @@
 #include <sstream>
 #include <stdlib.h>
 #include <vector>
+#include <string>
 
 const int size = 6;
 using namespace std;
@@ -63,6 +64,10 @@ void write_binary_file(City cities[], int size, char* filename){
 
 void print_from_binary(char* filename) {
 
+    string fname = filename;
+    fname = fname.substr(0, fname.size()-3);
+    fname.append("txt");
+
 
     // open input file stream we get cities from
     ifstream is(filename, ios::binary);
@@ -72,7 +77,7 @@ void print_from_binary(char* filename) {
     }
 
     // output file we will write to
-    ofstream ofs("output.txt", std::ofstream::trunc);
+    ofstream ofs(fname.c_str(), std::ofstream::trunc);
     if(ofs.fail()){
         cerr << "failed to open file: " << filename << endl;
         exit(1);
